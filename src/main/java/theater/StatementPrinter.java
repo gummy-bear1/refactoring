@@ -111,4 +111,20 @@ public class StatementPrinter {
     private String usd(int amount) {
         return NumberFormat.getCurrencyInstance(Locale.US).format(amount / Constants.PERCENT_FACTOR);
     }
+
+    private int getTotalVolumeCredits() {
+        int result = 0;
+        for (Performance p : invoice.getPerformances()) {
+            result += getVolumeCredits(p);
+        }
+        return result;
+    }
+
+    private int getTotalAmount() {
+        int result = 0;
+        for (Performance p : invoice.getPerformances()) {
+            result += getAmount(p);
+        }
+        return result;
+    }
 }
